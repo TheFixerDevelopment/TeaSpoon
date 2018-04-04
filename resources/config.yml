@@ -16,9 +16,9 @@ entities:
  # Weather to register Vanilla Entities (Set to false if you're going to use a MobAI Plugin such as, PureEntitiesX etc...) or not
  register: true
  # Enable Lightning Fire & Damage
- lightningFire: true
+ lightningFire: false
  # Enable EndCrystal Explosion
- endCrystalExplosion: true
+ endCrystalExplosion: false
  # EndCrystal Explosion Power
  endCrystalPower: 6
 
@@ -45,8 +45,6 @@ misc:
  loadAllAPIs: false
  # Enable to generate new Fishing LootTables everyday
  randomFishingLootTables: false
- # Minecart Cars! Flying Cars! just for fun xD
- cars: false
  
 enderPearl:
  enable: true
@@ -58,7 +56,7 @@ chorusFruit:
  cooldown: 2
 
 weather: 
- enable: true
+ enable: false
  # Minimum Weather Duration (IN TICKS)
  minDuration: 6000
  # Maximum Weather Duration (IN TICKS)
@@ -72,7 +70,7 @@ player:
  # In vanilla, this is false... In Genisys, its true
  clearInventoryOnGameModeChange: false
  instantArmor:
-  enable: true
+  enable: false
  # Toggle to replace current armor or not (Vanilla-Way: false) [might cause glitches/bugs on server lag]
   replace: false
  # Elytra configuration
@@ -86,9 +84,9 @@ player:
 mobSpawner:
  enable: true
  # Drop spawners on silk touch (damageAsEID needs to be enabled)
- silkTouchSpawners: false
+ silkTouchSpawners: true
  # Use MonsterSpawner Damage Value as the Entity ID -- False in vanilla minecraft
- damageAsEID: false
+ damageAsEID: true
 
 fireworks:
  enable: true
