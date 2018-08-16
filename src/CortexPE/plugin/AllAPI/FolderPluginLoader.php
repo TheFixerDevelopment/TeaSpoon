@@ -45,7 +45,7 @@ $class_exists = function(string $class): bool{
 };
 
 if($class_exists("\FolderPluginLoader\FolderPluginLoader")){
-	eval(	
+	eval('	
 namespace CortexPE\plugin\AllAPI;
 
 use FolderPluginLoader\FolderPluginLoader as DTFolderPluginLoader;
@@ -91,3 +91,4 @@ class FolderPluginLoader extends DTFolderPluginLoader {
     }
   
 }
+');
