@@ -49,7 +49,7 @@ class Tile extends PMTile {
         HOPPER = "Hopper",
         JUKEBOX = "Jukebox";
 
-	public static function init(){
+	public static function init(): void{
 		Main::getPluginLogger()->debug("Registering Tiles...");
 		self::registerTile(Beacon::class);
 		self::registerTile(MobSpawner::class);

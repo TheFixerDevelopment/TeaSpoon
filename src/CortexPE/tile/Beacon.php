@@ -210,12 +210,12 @@ class Beacon extends Spawnable implements InventoryHolder {
 	 *
 	 * @return BeaconInventory
 	 */
-	public function getInventory(){
+	public function getInventory(): BeaconInventory{
 		return $this->inventory;
 	}
 
     protected function readSaveData(CompoundTag $nbt): void
-    {
+	{
         $this->nbt = $nbt;
     }
 

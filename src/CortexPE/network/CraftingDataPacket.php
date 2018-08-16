@@ -59,7 +59,7 @@ class CraftingDataPacket extends PMCraftingDataPacket {
 		return parent::clean();
 	}
 
-	protected function decodePayload(){
+	protected function decodePayload(): void{
 		$this->decodedEntries = [];
 		$recipeCount = $this->getUnsignedVarInt();
 		for($i = 0; $i < $recipeCount; ++$i){
@@ -117,7 +117,7 @@ class CraftingDataPacket extends PMCraftingDataPacket {
 		$this->getBool(); //cleanRecipes
 	}
 
-	private static function writeEntry($entry, NetworkBinaryStream $stream){
+	private static function writeEntry($entry, NetworkBinaryStream $stream): int{
 		if($entry instanceof ShapelessRecipe){
 			return self::writeShapelessRecipe($entry, $stream);
 		}elseif($entry instanceof ShapedRecipe){
@@ -132,7 +132,7 @@ class CraftingDataPacket extends PMCraftingDataPacket {
 		return -1;
 	}
 
-	private static function writeShapelessRecipe(ShapelessRecipe $recipe, NetworkBinaryStream $stream){
+	private static function writeShapelessRecipe(ShapelessRecipe $recipe, NetworkBinaryStream $stream): int{
 		$stream->putUnsignedVarInt($recipe->getIngredientCount());
 		foreach($recipe->getIngredientList() as $item){
 			$stream->putSlot($item);
@@ -149,7 +149,7 @@ class CraftingDataPacket extends PMCraftingDataPacket {
 		return CraftingDataPacket::ENTRY_SHAPELESS;
 	}
 
-	private static function writeShapedRecipe(ShapedRecipe $recipe, NetworkBinaryStream $stream){
+	private static function writeShapedRecipe(ShapedRecipe $recipe, NetworkBinaryStream $stream): int{
 		$stream->putVarInt($recipe->getWidth());
 		$stream->putVarInt($recipe->getHeight());
 
@@ -170,7 +170,7 @@ class CraftingDataPacket extends PMCraftingDataPacket {
 		return CraftingDataPacket::ENTRY_SHAPED;
 	}
 
-	private static function writeFurnaceRecipe(FurnaceRecipe $recipe, NetworkBinaryStream $stream){
+	private static function writeFurnaceRecipe(FurnaceRecipe $recipe, NetworkBinaryStream $stream): int{
 		if(!$recipe->getInput()->hasAnyDamageValue()){ //Data recipe
 			$stream->putVarInt($recipe->getInput()->getId());
 			$stream->putVarInt($recipe->getInput()->getDamage());
@@ -185,7 +185,7 @@ class CraftingDataPacket extends PMCraftingDataPacket {
 		}
 	}
 
-	private static function writeEnchantList(EnchantmentList $list, NetworkBinaryStream $stream){
+	private static function writeEnchantList(EnchantmentList $list, NetworkBinaryStream $stream): int{
 		$stream->putByte($list->getSize());
 		for($i = 0; $i < $list->getSize(); $i++){
 			$entry = $list->getSlot($i);
@@ -202,19 +202,19 @@ class CraftingDataPacket extends PMCraftingDataPacket {
 		return CraftingDataPacket::ENTRY_ENCHANT_LIST;
 	}
 
-	public function addShapelessRecipe(ShapelessRecipe $recipe){
+	public function addShapelessRecipe(ShapelessRecipe $recipe): void{
 		$this->entries[] = $recipe;
 	}
 
-	public function addShapedRecipe(ShapedRecipe $recipe){
+	public function addShapedRecipe(ShapedRecipe $recipe): void{
 		$this->entries[] = $recipe;
 	}
 
-	public function addFurnaceRecipe(FurnaceRecipe $recipe){
+	public function addFurnaceRecipe(FurnaceRecipe $recipe): void{
 		$this->entries[] = $recipe;
 	}
 
-	protected function encodePayload(){
+	protected function encodePayload(): void{
 		$this->putUnsignedVarInt(count($this->entries));
 
 		$writer = new NetworkBinaryStream();
