@@ -24,7 +24,7 @@
 
 declare(strict_types = 1);
 
-namespace CortexPE\level\biome;
+namespace CortexPE\level\generator\biome;
 
 use pocketmine\level\biome\Biome;
 
