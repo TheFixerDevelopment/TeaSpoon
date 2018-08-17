@@ -39,15 +39,15 @@ class EnderPilar extends Populator {
 	private $baseAmount;
 	private const radii = [3,4,3,5,3,4,3,3,5,4,5,3,5,4,4,5,5,4,4,4,5];
 
-	public function setRandomAmount($amount){
+	public function setRandomAmount(int $amount){
 		$this->randomAmount = $amount;
 	}
 
-	public function setBaseAmount($amount){
+	public function setBaseAmount(int $amount){
 		$this->baseAmount = $amount;
 	}
 
-	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
+	public function populate(ChunkManager $level, int $chunkX, int $chunkZ, Random $random): void{
 		// todo: only spawn within 50 blocks from spawn point at a circle (Usual Amount: 10-15 [in my pov])
 		if(mt_rand(0, 100) <= 50){
 			$this->level = $level;
