@@ -38,14 +38,14 @@ class NetherLava extends Populator {
 	/**
 	 * @param $amount
 	 */
-	public function setRandomAmount($amount){
+	public function setRandomAmount(int $amount){
 		$this->randomAmount = $amount;
 	}
 
 	/**
 	 * @param $amount
 	 */
-	public function setBaseAmount($amount){
+	public function setBaseAmount(int $amount){
 		$this->baseAmount = $amount;
 	}
 
@@ -57,7 +57,7 @@ class NetherLava extends Populator {
 	 *
 	 * @return mixed|void
 	 */
-	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
+	public function populate(ChunkManager $level, int $chunkX, int $chunkZ, Random $random): void{
 		if(mt_rand(0, 100) < 5){
 			$this->level = $level;
 			$amount = $random->nextRange(0, $this->randomAmount + 1) + $this->baseAmount;
