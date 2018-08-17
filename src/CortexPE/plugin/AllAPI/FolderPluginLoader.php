@@ -92,3 +92,4 @@ class FolderPluginLoader extends DTFolderPluginLoader {
   
 }
 ');
+}

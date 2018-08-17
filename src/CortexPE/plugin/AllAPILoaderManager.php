@@ -40,14 +40,13 @@ use CortexPE\plugin\AllAPI\{
 };
 use pocketmine\plugin\PluginLoadOrder;
 use pocketmine\Server as PMServer;
-use pocketmine\Server;
 
 class AllAPILoaderManager {
 	public static function init(): void{
-		PMServer::getInstance()->getPluginManager()->registerInterface(new PharPluginLoader(Server::getInstance()));
-		PMServer::getInstance()->getPluginManager()->registerInterface(new ScriptPluginLoader(Server::getInstance()));
+		PMServer::getInstance()->getPluginManager()->registerInterface(new PharPluginLoader(PMServer::getInstance()->getLoader()));
+		PMServer::getInstance()->getPluginManager()->registerInterface(new ScriptPluginLoader());
 		if(self::hasFolderPluginLoader()){
-			PMServer::getInstance()->getPluginManager()->registerInterface(new FolderPluginLoader(Server::getInstance()));
+			PMServer::getInstance()->getPluginManager()->registerInterface(new FolderPluginLoader(PMServer::getInstance()->getLoader()));
 		}
 
 		PMServer::getInstance()->getPluginManager()->loadPlugins(PMServer::getInstance()->getPluginPath(), [PharPluginLoader::class, ScriptPluginLoader::class, FolderPluginLoader::class]);

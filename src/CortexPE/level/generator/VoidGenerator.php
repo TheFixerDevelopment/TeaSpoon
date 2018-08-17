@@ -27,6 +27,7 @@ use pocketmine\block\Block;
 use pocketmine\level\{
 	ChunkManager, format\Chunk, generator\Generator
 };
+use pocketmine\level\generator\GeneratorManager;
 use pocketmine\math\Vector3;
 use pocketmine\utils\Random;
 

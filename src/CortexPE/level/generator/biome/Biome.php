@@ -35,7 +35,7 @@ declare(strict_types = 1);
 
 namespace CortexPE\level\generator\biome;
 
-use CortexPE\level\generator\ender\biome\EnderBiome;
+use CortexPE\level\generator\biome\EnderBiome;
 use pocketmine\level\biome\HellBiome;
 
 abstract class Biome extends \pocketmine\level\biome\Biome {
@@ -69,7 +69,7 @@ abstract class Biome extends \pocketmine\level\biome\Biome {
 
         VOID = 127;
 
-	public static function init(){
+	public static function init() : void{
 		parent::init();
 
 		self::register(self::HELL, new HellBiome());
